@@ -7,14 +7,15 @@ const containerStyle = {
   };
   
   const center = {
-    lat: -3.745,
-    lng: -38.523
+    lat: 22.845640,
+    lng: 89.540329
   };
 
 const Map = () => {
     return (
         <LoadScript
-            googleMapsApiKey="YOUR_API_KEY"
+            // put the api key in .env.local file.
+            googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAP_API_KEY}
         >
             <GoogleMap
             mapContainerStyle={containerStyle}
