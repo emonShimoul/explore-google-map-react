@@ -6,7 +6,7 @@ const location = {
     lng: 89.540329
 };
 
-const Direction = () => {
+const Direction = ({origin, destination}) => {
     const [response, setResponse] = useState(null);
     const directionsCallback = res => {
         if(res != null){
@@ -35,8 +35,8 @@ const Direction = () => {
                     <DirectionsService
                     // required
                     options={{
-                        destination: 'newmarket, khulna',
-                        origin: 'khulna public college, khulna',
+                        destination: destination,
+                        origin: origin,
                         travelMode: 'DRIVING'
                     }}
                     // required
