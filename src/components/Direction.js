@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 const location = {
@@ -7,6 +7,12 @@ const location = {
 };
 
 const Direction = () => {
+    const [response, setResponse] = useState(null);
+    const directionsCallback = res => {
+        if(res != null){
+            setResponse(res);
+        }
+    }
     return (
         <div>
             <LoadScript
@@ -29,28 +35,20 @@ const Direction = () => {
                     <DirectionsService
                     // required
                     options={{
-                        destination: this.state.destination,
-                        origin: this.state.origin,
-                        travelMode: this.state.travelMode
+                        destination: 'newmarket, khulna',
+                        origin: 'khulna public college, khulna',
+                        travelMode: 'DRIVING'
                     }}
                     // required
-                    callback={this.directionsCallback}
+                    callback={directionsCallback}
                     />
 
                 {
-                this.state.response !== null && (
+                response !== null && (
                     <DirectionsRenderer
                     // required
                     options={{ 
                         directions: this.state.response
-                    }}
-                    // optional
-                    onLoad={directionsRenderer => {
-                        console.log('DirectionsRenderer onLoad directionsRenderer: ', directionsRenderer)
-                    }}
-                    // optional
-                    onUnmount={directionsRenderer => {
-                        console.log('DirectionsRenderer onUnmount directionsRenderer: ', directionsRenderer)
                     }}
                     />
                 )
