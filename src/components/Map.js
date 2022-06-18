@@ -4,12 +4,12 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 const containerStyle = {
     width: '400px',
     height: '400px'
-  };
+};
   
-  const center = {
+const center = {
     lat: 22.845640,
     lng: 89.540329
-  };
+};
 
 const Map = () => {
     return (
